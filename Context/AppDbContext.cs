@@ -33,6 +33,7 @@ namespace UnivManager.Context
             // Seulement les configurations personnalisées nécessaires
             modelBuilder.Entity<Bachelier>(entity =>
             {
+                entity.ToTable("Bacheliers");
                 entity.HasKey(e => e.IdBachelier);
                 entity.Property(e => e.NumeroCandidat).IsRequired();
                 entity.Property(e => e.Moyenne).HasColumnType("decimal(18,2)");
@@ -61,6 +62,7 @@ namespace UnivManager.Context
 
             modelBuilder.Entity<Centre>(entity =>
             {
+                entity.ToTable("Centres");
                 entity.HasKey(e => e.IdCentre);
                 entity.Property(e => e.NomCentre).IsRequired().HasMaxLength(200);
                 
@@ -71,12 +73,14 @@ namespace UnivManager.Context
 
             modelBuilder.Entity<Etablissement>(entity =>
             {
+                entity.ToTable("Etablissements");
                 entity.HasKey(e => e.IdEtablissement);
                 entity.Property(e => e.NomEtablissement).IsRequired().HasMaxLength(200);
             });
 
             modelBuilder.Entity<Mention>(entity =>
             {
+                entity.ToTable("Mentions");
                 entity.HasKey(e => e.IdMention);
                 entity.Property(e => e.NomMention).IsRequired().HasMaxLength(100);
                 entity.Property(e => e.Min).HasDefaultValue(0);
@@ -85,12 +89,14 @@ namespace UnivManager.Context
 
             modelBuilder.Entity<Option>(entity =>
             {
+                entity.ToTable("Options");
                 entity.HasKey(e => e.IdOption);
                 entity.Property(e => e.Serie).IsRequired().HasMaxLength(50);
             });
 
             modelBuilder.Entity<Personne>(entity =>
             {
+                entity.ToTable("Personnes");
                 entity.HasKey(e => e.IdPersonne);
                 entity.Property(e => e.NomPrenom).IsRequired().HasMaxLength(200);
                 entity.Property(e => e.LieuNaissance).HasMaxLength(200);
@@ -102,12 +108,14 @@ namespace UnivManager.Context
 
             modelBuilder.Entity<Province>(entity =>
             {
+                entity.ToTable("Provinces");
                 entity.HasKey(e => e.IdProvince);
                 entity.Property(e => e.NomProvince).IsRequired().HasMaxLength(100);
             });
 
             modelBuilder.Entity<Note>(entity =>
             {
+                entity.ToTable("Notes");
                 entity.HasKey(e => e.IdNote);
                 entity.Property(e => e.ValeurNote).HasColumnType("decimal(18,2)");
                 entity.Property(e => e.EstOptionnel).HasDefaultValue(false);
@@ -123,12 +131,14 @@ namespace UnivManager.Context
 
             modelBuilder.Entity<Matiere>(entity =>
             {
+                entity.ToTable("Matieres");
                 entity.HasKey(e => e.IdMatiere);
                 entity.Property(e => e.NomMatiere).IsRequired().HasMaxLength(100);
             });
 
             modelBuilder.Entity<Administration>(entity =>
             {
+                entity.ToTable("Administrations");
                 entity.HasKey(e => e.IdAdmin);
                 entity.Property(e => e.Username).IsRequired().HasMaxLength(100);
                 entity.HasIndex(e => e.Username).IsUnique();
@@ -136,6 +146,7 @@ namespace UnivManager.Context
 
             modelBuilder.Entity<Historique>(entity =>
             {
+                entity.ToTable("Historiques");
                 entity.HasKey(e => e.IdHistorique);
                 entity.Property(e => e.DateEvenement).HasDefaultValueSql("NOW()");
                 
